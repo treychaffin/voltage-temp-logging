@@ -23,7 +23,7 @@ const float intercept = -0.255054; // AC voltage sensor calibration
     Relay Functions
 ***********************/
 
-void initGPIO() {
+void initGPIO(bool serialMessages) {
   pinMode(AC_PIN, INPUT);
   
   pinMode(RELAY_PIN, OUTPUT);
@@ -32,6 +32,7 @@ void initGPIO() {
   pinMode(VBATT_PIN, INPUT);
   pinMode(LIGHT_PIN, INPUT);
   pinMode(TEMP_PIN, INPUT);
+  if (serialMessages == true) {Serial.println("GPIO initialized: AC_PIN, RELAY_PIN, VBATT_PIN, LIGHT PIN, TEMP_PIN");}
 }
 
 
@@ -53,8 +54,9 @@ uint16_t getBattVoltageRaw() {
     AC Voltage Sensor Functions
 **********************************/
 
-void initACVoltageSensor() {
+void initACVoltageSensor(bool serialMessages) {
   input_stats.setWindowSecs( AC_VOLT_SAMPLE_WINDOW );
+  if (serialMessages == true) {Serial.println("AC sensor sample window set");}
 }
 
 
@@ -85,8 +87,9 @@ uint16_t getACVoltage() {
 /*****************************
     Light Sensor Functions
 ******************************/
-void initAnalogVoltageSensor() {
+void initAnalogVoltageSensor(bool serialMessages) {
   light_stats.setWindowSecs( ANALOG_LIGHT_SENSOR_SAMPLE_WINDOW );
+  if (serialMessages == true) {Serial.println("Analog light sensor sample window set");}
 }
 
 void sampleLuxtoArray() {

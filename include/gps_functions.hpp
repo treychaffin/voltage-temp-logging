@@ -13,4 +13,8 @@ String getTimeString();
 String getTimeAndDateString();
 String getSecondsString();
 uint8_t getSeconds();
+uint8_t getMinute();
+uint8_t getHour();
+uint8_t getDay();
+uint8_t getMonth();
 uint8_t getYear();

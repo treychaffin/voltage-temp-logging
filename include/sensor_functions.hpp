@@ -27,15 +27,20 @@ extern const int LUX_LOW_THRESHOLD;
      GPIO Functions
 ***********************/
 
-void initGPIO();
+void initGPIO(bool serialMessages = false);
 
 /*********************************
     AC Voltage Sensor Functions
 **********************************/
 
-void initACVoltageSensor();
+void initACVoltageSensor(bool serialMessages = false);
 void sampleACVoltage();
 uint16_t getACVoltage();
+
+/*********************************
+    Voltage Divider Functions
+**********************************/
+
 uint16_t getBattVoltageRaw();
 float getBattVoltageFloat();
 
@@ -43,7 +48,7 @@ float getBattVoltageFloat();
     Light Sensor Functions
 ******************************/
 
-void initAnalogVoltageSensor();
+void initAnalogVoltageSensor(bool serialMessages = false);
 void sampleLuxtoArray();
 uint16_t sampleLux();
 

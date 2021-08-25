@@ -115,6 +115,22 @@ uint8_t getSeconds() {
   return GPS.seconds;
 }
 
+uint8_t getMinute() {
+  return GPS.minute;
+}
+
+uint8_t getHour() {
+  return GPS.hour;
+}
+
+uint8_t getDay() {
+  return GPS.day;
+}
+
+uint8_t getMonth() {
+  return GPS.month;
+}
+
 uint8_t getYear() {
   return GPS.year;
 }

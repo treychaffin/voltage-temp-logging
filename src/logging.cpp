@@ -5,14 +5,14 @@
 #include <iostream>
 #include <vector>
 
-void initSD() {
+void initSD(bool serialMessages) {
     if (!SD.begin(4)) {
-        Serial.println("SD initialization failed!");
+        if (serialMessages == true) {Serial.println("SD initialization failed!");}
         while (1) {
             blinkBuiltIn(500,0.25);
         }; // stop the program 
     }
-    Serial.println("SD initialization done.");
+    if (serialMessages == true) {Serial.println("SD initialization done.");}
 }
 
 DataFile::DataFile(const char* newDataFileName) : dataFileName(newDataFileName) {
@@ -26,18 +26,22 @@ DataFile::DataFile(const char* newDataFileName) : dataFileName(newDataFileName) 
  *  Ex: 12345678.123, 20210822.csv, datafile.txt
 *********************************************************************************/
 
-void DataFile::createDataFile() {
+void DataFile::createDataFile(bool serialMessages) {
     File file = SD.open(dataFileName, FILE_WRITE);
     if (file) {
-        Serial.println("File created");
+        if (serialMessages == true) {Serial.println("File created");}
         file.close();
     } else {
-        Serial.println("Error creating file");
+        if (serialMessages == true) {Serial.println("Error creating file");}
     }
 }
 
-void DataFile::logData() {
-    Serial.println(logString());
+void DataFile::logData(bool serialMessages) {
+    File file = SD.open(dataFileName, FILE_WRITE);
+    String dataLogString = logString();
+    file.println(dataLogString);
+    if (serialMessages == true) {Serial.println(dataLogString);}
+    file.close();
 }
 
 String logString() {
@@ -45,6 +49,8 @@ String logString() {
     String logString = getTimeAndDateString();
     logString += logDelimeter;
     logString += readTemp();
+    logString += logDelimeter;
+    logString += getACVoltage();
     logString += logDelimeter;
     logString += sampleLux();
     logString += logDelimeter;
