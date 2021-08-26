@@ -89,17 +89,13 @@ uint16_t getACVoltage() {
 ******************************/
 
 /**
- * \brief Initialize Analog (Light) Voltage Sensor
+ * \brief Initialize Analog (Light) Voltage Sensor. 
  * 
- * Sets the analog light sensor sample window to the float 
- * defined in "Light Sensor Vars" section 
+ * Sets the "ANALOG_LIGHT_SENSOR_SAMPLE_WINDOW" to the float 
+ * defined in "Light Sensor Vars" section. 
  * For Serial Messages: call "true" when calling the function 
  * 
  * \param serialMessages boolean value, defaults to false
- *        
- * For Serial Messages, call true
- * Ex: initAnalogVoltageSensor(true);
- *
  *
  * \return None
  */

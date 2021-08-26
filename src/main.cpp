@@ -6,18 +6,21 @@
 #include "LED_error.hpp"
 #include "gps_functions.hpp"
 
+
+// TIMER VARIABLES
+uint32_t loopTimerInterval = 60000; // Sets the logging frequency, milli-seconds
 uint32_t loopTimer;
-uint32_t loopTimerInterval = 60000; // milli-seconds
-uint8_t topOfMinute = 0;
 
-DataFile logFile("logtest.csv"); // MUST USE 8.3 filename
+// DATA-LOG FILE OBJECT
+DataFile logFile("logtest.csv"); // Name file here, MUST USE 8.3 filename
 
-
-bool secFlag = false;
 
 void setup() {
-  while (!Serial);  
+  // wait for serial connection, comment out line to run from non-pc power supply
+  while (!Serial); 
+
   Serial.begin(115200);
+
   Serial.println("*************************************");
   Serial.println("   AC voltage / temperature logger   ");
   Serial.println("*************************************");
