@@ -19,5 +19,4 @@ This program logs a csv file to the attached sd card.
 
 Columns are logged as follows:
 
-| GPSDATE(UTC) GPSTIME(UTC) | Temperature Reading | Analog Light Sensor Reading | 12 VDC Battery Voltage |
-| ------------------------- |-------------------------------------------------- | ---------------------- |
+[GPSDATE(UTC) GPSTIME(UTC)],[Temperature Reading],[Analog Light Sensor Reading],[12 VDC Battery Voltage]
