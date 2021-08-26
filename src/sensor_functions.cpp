@@ -87,6 +87,22 @@ uint16_t getACVoltage() {
 /*****************************
     Light Sensor Functions
 ******************************/
+
+/**
+ * \brief Initialize Analog (Light) Voltage Sensor
+ * 
+ * Sets the analog light sensor sample window to the float 
+ * defined in "Light Sensor Vars" section 
+ * For Serial Messages: call "true" when calling the function 
+ * 
+ * \param serialMessages boolean value, defaults to false
+ *        
+ * For Serial Messages, call true
+ * Ex: initAnalogVoltageSensor(true);
+ *
+ *
+ * \return None
+ */
 void initAnalogVoltageSensor(bool serialMessages) {
   light_stats.setWindowSecs( ANALOG_LIGHT_SENSOR_SAMPLE_WINDOW );
   if (serialMessages == true) {Serial.println("Analog light sensor sample window set");}
