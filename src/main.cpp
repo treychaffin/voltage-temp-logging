@@ -1,6 +1,4 @@
 #include <Arduino.h>
-#include <iostream>
-#include <RTClib.h>
 #include "sensor_functions.hpp"
 #include "logging.hpp"
 #include "LED_error.hpp"
