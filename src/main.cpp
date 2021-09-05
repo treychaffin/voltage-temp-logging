@@ -6,16 +6,16 @@
 
 
 // TIMER VARIABLES
-uint32_t loopTimerInterval = 60000; // Sets the logging frequency, milli-seconds
+uint32_t loopTimerInterval = 10000; // Sets the logging frequency, milli-seconds
 uint32_t loopTimer;
 
 // DATA-LOG FILE OBJECT
-DataFile logFile("logtest.csv"); // Name file here, MUST USE 8.3 filename
+DataFile logFile("longtest.csv"); // Name file here, MUST USE 8.3 filename
 
 
 void setup() {
   // wait for serial connection, comment out line to run from non-pc power supply
-  while (!Serial); 
+  // while (!Serial); 
 
   Serial.begin(115200);
 
@@ -27,6 +27,7 @@ void setup() {
   initGPIO(true);
   initAnalogVoltageSensor(true);
   initACVoltageSensor(true);
+  initTempSensor(true);
   logFile.createDataFile(true);
   initGPS(true);
   Serial.print("logging will begin in ");
@@ -39,6 +40,7 @@ void loop() {
   readGPS();
   sampleACVoltage();
   sampleLuxtoArray();
+  sampleTempSensor();
   if (millis() - loopTimer > loopTimerInterval) {
     loopTimer = millis();
     logFile.logData(true);

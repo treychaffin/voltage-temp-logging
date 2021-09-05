@@ -56,4 +56,6 @@ uint16_t sampleLux();
     Temperature Sensor Functions
 *********************************/
 
+void initTempSensor(bool serialMessages = false);
+void sampleTempSensor();
 float readTemp();
