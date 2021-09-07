@@ -1,7 +1,9 @@
 #include "logging.hpp"
 #include "gps_functions.hpp"
-#include "sensor_functions.hpp"
-#include "LED_error.hpp"
+#include "AL_sensor_functions.hpp"
+#include "TMP_sensor_functions.hpp"
+#include "VAC_sensor_functions.hpp"
+#include "VD_sensor_functions.hpp"
 #include <iostream>
 #include <vector>
 
@@ -9,7 +11,6 @@ void initSD(bool serialMessages) {
     if (!SD.begin(4)) {
         if (serialMessages == true) {Serial.println("SD initialization failed!");}
         while (1) {
-            blinkBuiltIn(500,0.25);
         }; // stop the program 
     }
     if (serialMessages == true) {Serial.println("SD initialization done.");}
@@ -52,7 +53,7 @@ String logString() {
     logString += logDelimeter;
     logString += getACVoltage();
     logString += logDelimeter;
-    logString += sampleLux();
+    logString += sampleAnalogLight();
     logString += logDelimeter;
     logString += getBattVoltageFloat();
     return logString;

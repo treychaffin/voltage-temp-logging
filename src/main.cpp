@@ -1,7 +1,9 @@
 #include <Arduino.h>
-#include "sensor_functions.hpp"
+#include "AL_sensor_functions.hpp"
+#include "TMP_sensor_functions.hpp"
+#include "VAC_sensor_functions.hpp"
+#include "VD_sensor_functions.hpp"
 #include "logging.hpp"
-#include "LED_error.hpp"
 #include "gps_functions.hpp"
 
 
@@ -24,8 +26,8 @@ void setup() {
   Serial.println("*************************************");
   Serial.println("");
   initSD(true);
-  initGPIO(true);
-  initAnalogVoltageSensor(true);
+  initVDsensor(true);
+  initAnalogLightSensor(true);
   initACVoltageSensor(true);
   initTempSensor(true);
   logFile.createDataFile(true);
@@ -39,7 +41,7 @@ void setup() {
 void loop() {
   readGPS();
   sampleACVoltage();
-  sampleLuxtoArray();
+  sampleAnalogLightSensor();
   sampleTempSensor();
   if (millis() - loopTimer > loopTimerInterval) {
     loopTimer = millis();
